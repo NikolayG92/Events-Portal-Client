@@ -1,0 +1,10 @@
+<div class="category-list">
+    <ul *ngIf="categories">
+        <li>
+            <a routerLink="/home">ALL</a>
+        </li>
+    
+            <app-category *ngFor="let category of categories" [category]="category"></app-category>
+        
+    </ul>
+</div>

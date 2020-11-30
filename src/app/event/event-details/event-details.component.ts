@@ -1,0 +1,48 @@
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+import { EventModel } from '../event-model';
+import { EventsService } from '../event.service';
+
+@Component({
+  selector: 'app-event-details',
+  templateUrl: './event-details.component.html',
+  styleUrls: ['./event-details.component.css']
+})
+export class EventDetailsComponent implements OnInit {
+
+  
+  @Input() event: EventModel;
+
+  
+  apiUrl = `${environment.apiUrl}/events`
+
+  constructor(private route: ActivatedRoute,
+    private eventService: EventsService,
+    private http: HttpClient) { }
+
+  ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+      const id = params['id'];
+      this.eventService.getById(id)
+      .subscribe(data => {
+        this.event = data;
+
+      
+      })
+    })
+  }
+
+  buyTickets(id: string) {
+    this.event.ticketsAvailable--;
+    this.eventService.buyTickets(id, this.event).subscribe(data => {
+      console.log(data.toString);
+    })
+  }
+     
+}
+
+

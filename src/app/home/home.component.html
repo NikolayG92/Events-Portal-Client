@@ -1,0 +1,27 @@
+<div class="welcome">
+    <!-- <h3>Welcome to our events portal!</h3>
+    <p>Here you can get tickets for events. Don't waste time anymore!
+        Explore our events and take tickets now!
+    </p>
+    <div class="logged" *ngIf="!isLogged">
+      <ul class="welcome-nav">
+        <li>
+          <a routerLink="/user/login">
+            <i class="fas fa-sign-in-alt"></i>
+            Login
+          </a>
+        </li>
+        <li>
+          <a routerLink="/user/register">
+            <i class="fas fa-user-plus"></i>
+            Register
+          </a>
+        </li>
+      </ul>
+    </div> -->
+    <div *ngIf="!isLogged">
+      
+      <app-category-list></app-category-list>
+      <app-events-list></app-events-list>
+    </div>
+  </div>

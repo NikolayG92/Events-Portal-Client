@@ -1,0 +1,34 @@
+.form-title {
+    color: rgba(4, 8, 17, 0.521);
+    display: flex;
+    justify-content: center; 
+    border-bottom: 2px solid gray;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid gray;
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+}
+
+.form-item {     
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15 15;
+    margin: 10px 5px;
+    font-weight: 700;
+    font-size: large;
+}
+
+.form-btn {
+    border-radius: 12px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 20px;
+    background: cadetblue;
+}

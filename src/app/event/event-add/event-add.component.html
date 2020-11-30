@@ -1,0 +1,46 @@
+ <h1 class="form-title">Add Event</h1>
+  <form class="form-group">
+      <div class="form-item">
+          <div>
+              <label for="name">Name</label>
+          </div>
+          <input type="text"  id="name" name="name"/>
+         
+      </div>
+      <div class="form-item">
+          <div>
+              <label for="description">Description</label>
+          </div>
+          <input type="text" id="description" name="description"/>
+    
+      </div>
+      <div class="form-item">
+          <div>
+              <label for="tickets">Available Tickets</label>
+          </div>
+          <input type="number" id="tickets" name="tickets"/>
+  
+      </div>
+
+      <div class="form-item">
+        <div>
+            <label for="imageUrl">Select image</label>
+        </div>
+        <input type="file" class="form-control" id="imageUrl" name="imageUrl"/>
+    </div>
+
+      <div class="form-item">
+          <div>
+              <label for="category">Category</label>
+          </div>
+          <select name="category" id="category">
+              <option value="Select category" text="Select category">Select category</option>
+              <option value="Sports" text="Sports">Sports</option>
+              <option value="Theatre" text="Theatre">Theatre</option>
+          </select>
+
+      </div>
+      <div>
+          <button class="form-btn" type="submit" value="createEvent">Create event</button>
+      </div>
+  </form>

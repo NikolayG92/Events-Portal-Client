@@ -1,0 +1,46 @@
+h1, h2 {
+    color: lightseagreen;
+    text-shadow: 2px 3px 3px rgba(150, 150, 150, 0.7)
+}
+
+article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img{
+    max-width: 300px;
+    width: 300px;
+    margin-bottom: 20px;
+    max-height: 170px;
+
+}
+
+.event-info {
+    border: 2px solid #99acff;
+    border-radius: 5px;
+    box-shadow: 6px 3px 16px 1px rgba(0,0,0,0.75);
+    width: 300px;
+    margin-right: 50px;
+    margin-bottom: 50px;
+    background: white;
+    min-height: 320px;
+}
+
+.event-info span:nth-child(2) {
+    font-size: xx-large;
+}
+
+
+.event-info span:nth-child(3) {
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.events {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}

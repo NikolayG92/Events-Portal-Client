@@ -1,0 +1,8 @@
+<app-category-list></app-category-list>
+<article>
+    <h1>Explore a lots of events in our portal!</h1>
+    <h2>Reserve your seat now and enjoy your favorite event!</h2>
+</article>
+<section class="events" *ngIf="events">
+    <app-event *ngFor="let event of events" [event]="event"></app-event>
+</section>
