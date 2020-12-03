@@ -1,26 +1,52 @@
- <h1 class="form-title">Add Event</h1>
-  <form class="form-group">
+
+  <form #f="ngForm"(ngSubmit)="submitFormHandler(f.value)" class="form-group">
+    <h1 class="form-title">Add Event</h1>
       <div class="form-item">
           <div>
               <label for="name">Name</label>
           </div>
-          <input type="text"  id="name" name="name"/>
-         
-      </div>
+          <input #name="ngModel" [class.input-error]="name.touched && !!name.errors" 
+          type="text" id="name" name="name" ngModel required minlength=4/>
+          
+        </div>
+      <p class="input-error" *ngIf="name.touched && name.errors?.required">
+          Name is required!
+      </p>
+      <p class="input-error" *ngIf="name.touched && name.errors?.minlength">
+          Name should be at least 4 characters!
+      </p>
+   
       <div class="form-item">
           <div>
               <label for="description">Description</label>
           </div>
-          <input type="text" id="description" name="description"/>
+          <input #description="ngModel" [class.input-error]="description.touched && !!description.errors" 
+          type="text" id="description" name="description" ngModel required minlength=30/>
+          
+        </div>
+      <p class="input-error" *ngIf="description.touched && description.errors?.required">
+          Description is required!
+      </p>
+      <p class="input-error" *ngIf="description.touched && description.errors?.minlength">
+          Description should be at least 30 characters!
+      </p>
     
-      </div>
+    
       <div class="form-item">
           <div>
-              <label for="tickets">Available Tickets</label>
+              <label for="ticketsAvailable">Available Tickets</label>
           </div>
-          <input type="number" id="tickets" name="tickets"/>
-  
-      </div>
+          <input #ticketsAvailable="ngModel" [class.input-error]="ticketsAvailable.touched && !!ticketsAvailable.errors" 
+          type="number" id="ticketsAvailable" name="ticketsAvailable" ngModel required minvalue=10/>
+          
+        </div>
+      <p class="input-error" *ngIf="ticketsAvailable.touched && ticketsAvailable.errors?.required">
+          Tickets is required!
+      </p>
+      <p class="input-error" *ngIf="ticketsAvailable.touched && ticketsAvailable.errors?.minvalue">
+          You cannot create event with less than 10 tickets!
+      </p>
+      
 
       <div class="form-item">
         <div>
@@ -33,14 +59,13 @@
           <div>
               <label for="category">Category</label>
           </div>
-          <select name="category" id="category">
-              <option value="Select category" text="Select category">Select category</option>
-              <option value="Sports" text="Sports">Sports</option>
-              <option value="Theatre" text="Theatre">Theatre</option>
+          <select ngModel value="Select Category" name="category" id="category">
+            
+              <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
           </select>
 
       </div>
       <div>
-          <button class="form-btn" type="submit" value="createEvent">Create event</button>
+          <button class="form-btn" value="createEvent">Create event</button>
       </div>
   </form>

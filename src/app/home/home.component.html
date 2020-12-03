@@ -1,9 +1,10 @@
 <div class="welcome">
-    <!-- <h3>Welcome to our events portal!</h3>
+  <div class="logged" *ngIf="!isLogged">
+    <h3>Welcome to our events portal!</h3>
     <p>Here you can get tickets for events. Don't waste time anymore!
         Explore our events and take tickets now!
     </p>
-    <div class="logged" *ngIf="!isLogged">
+    
       <ul class="welcome-nav">
         <li>
           <a routerLink="/user/login">
@@ -18,8 +19,8 @@
           </a>
         </li>
       </ul>
-    </div> -->
-    <div *ngIf="!isLogged">
+    </div>
+    <div *ngIf="isLogged">
       
       <app-category-list></app-category-list>
       <app-events-list></app-events-list>

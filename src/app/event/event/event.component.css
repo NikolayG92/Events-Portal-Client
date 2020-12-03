@@ -44,3 +44,7 @@ img{
     flex-wrap: wrap;
     
 }
+
+.input-error {
+    color: red;
+}

@@ -7,6 +7,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryComponent } from './category/category.component';
 import { EventsByCategoryComponent } from './events-by-category/events-by-category.component';
 import { EventModule } from '../event/event.module';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { EventModule } from '../event/event.module';
     CommonModule,
     RouterModule,
     CategoryRoutingModule,
-    EventModule
+    EventModule,
+    FormsModule
   ],
   exports: [
     CategoryAddComponent,

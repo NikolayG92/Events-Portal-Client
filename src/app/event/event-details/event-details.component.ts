@@ -38,9 +38,7 @@ export class EventDetailsComponent implements OnInit {
 
   buyTickets(id: string) {
     this.event.ticketsAvailable--;
-    this.eventService.buyTickets(id, this.event).subscribe(data => {
-      console.log(data.toString);
-    })
+    this.eventService.buyTickets(id, this.event).subscribe();
   }
      
 }

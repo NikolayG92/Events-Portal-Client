@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment'
+import { UserService } from '../user/user.service';
 import { EventModel } from './event-model';
 
 
@@ -14,24 +15,35 @@ export class EventsService {
 
     collection: any;
 
-    apiUrl = `${environment.apiUrl}/events`
+    apiUrl = `${environment.apiUrl}/events`;
 
-    constructor(private http : HttpClient) { 
+    currentUser = this.userService.currentUser;
+
+    constructor(private http : HttpClient,
+        private userService: UserService) { 
             
         
          }
   
     getAll() : Observable<EventModel[]> {
-        return this.http.get<EventModel[]>(`${this.apiUrl}/all`);
+        console.log(this.currentUser);
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa
+        (this.currentUser.username + ':' + this.currentUser.password) });
+        return this.http.get<EventModel[]>(`${this.apiUrl}/all`, {headers});
+       
     }
     
     getById(id : string) : Observable<EventModel> {
-        return this.http.get<EventModel>(`${this.apiUrl}/${id}`);
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa
+        (this.currentUser.username + ':' + this.currentUser.password) });
+        return this.http.get<EventModel>(`${this.apiUrl}/${id}`, {headers});
     }
 
     
     addEvent(eventData : EventModel) {
-        return this.http.post<EventModel>(`${this.apiUrl}`, eventData);
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa
+        (this.currentUser.username + ':' + this.currentUser.password) });
+        return this.http.post<EventModel>(`${this.apiUrl}/create`, eventData, {headers});
     }
     
     delete(id : string) {
@@ -44,7 +56,9 @@ export class EventsService {
 
     
     buyTickets(id : string, eventModel : EventModel) {
-    return this.http.post(`${this.apiUrl}/buyTickets/${id}`, eventModel);
+        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa
+        (this.currentUser.username + ':' + this.currentUser.password) });
+    return this.http.post(`${this.apiUrl}/buyTickets/${id}`, eventModel, {headers});
     
 }
 }

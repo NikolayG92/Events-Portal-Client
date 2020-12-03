@@ -32,3 +32,6 @@
     margin-bottom: 20px;
     background: cadetblue;
 }
+.input-error {
+    color: red;
+}

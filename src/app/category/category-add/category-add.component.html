@@ -1,11 +1,20 @@
-<h1 class="form-title">Create Category</h1>
-<form class="form-group">
+
+<form #f="ngForm" (ngSubmit)="submitFormHandler(f.value)" class="form-group">
+    <h1 class="form-title">Create Category</h1>
     <div class="form-item">
         <div>
             <label for="name">Name</label>
         </div>
-        <input type="text" id="name" name="name" />
-    </div>
+        <input #name="ngModel" [class.input-error]="name.touched && !!name.errors" 
+          type="text" id="name" name="name" ngModel required minlength=4/>
+          
+        </div>
+      <p class="input-error" *ngIf="name.touched && name.errors?.required">
+          Name is required!
+      </p>
+      <p class="input-error" *ngIf="name.touched && name.errors?.minlength">
+          Name should be at least 4 characters!
+      </p>
     <div class="form-item">
         <div>
             <label for="imageUrl">Image</label>
@@ -13,6 +22,6 @@
         <input type="file" id="imageUrl" name="imageUrl" />
     </div>
     <div >
-        <button class= "form-btn" type="submit">Create</button>
+        <button class= "form-btn" >Create</button>
     </div>
 </form>

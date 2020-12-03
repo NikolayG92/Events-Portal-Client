@@ -16,14 +16,17 @@ const routes: Routes = [
                 path: "create",
                 component: CategoryAddComponent,
                 data: 
-                 {
+                 {  isLogged: true,
                     title: "Create Category"
                     }
                 
             },
             {
                 path: ":id",
-                component: EventsByCategoryComponent
+                component: EventsByCategoryComponent,
+                data: {
+                    isLogged: true
+                }
             }
         ]
     }
