@@ -10,7 +10,6 @@ import { UserService } from '../user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  isLoading = false;
   errorMessage = '';
  
   constructor( 
@@ -22,18 +21,18 @@ export class RegisterComponent implements OnInit {
 
   submitFormHandler(formValue: { username: string, email: string, 
     password: string, confirmPassword: string }): void {
-    this.isLoading = true;
     this.errorMessage = '';
     this.userService.register(formValue).subscribe({
       next: () => {
-        this.isLoading = false;
+
         this.router.navigate(['/user/login']);
       },
       error: () => {
         this.errorMessage = 'ERROR!';
-        this.isLoading = false;
+
       }
     });
-  
+
+
 }
 }

@@ -28,6 +28,8 @@
     max-width: 90%;
     border-radius: 100px;
     margin-bottom: 10px;
+    display: flex;
+    margin: 15px auto;
 }
 
 .event-info {

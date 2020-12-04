@@ -1,7 +1,12 @@
 <section class="event-details">
      <div class="event-header">
           <h1>{{event.name}}</h1>
-          <img src="{{event.imageUrl}}">
+          <div *ngIf="event.imageUrl === null">
+               <img src="../../../assets/img/no-image-available.jpg">
+          </div>
+          <div *ngIf="event.imageUrl">
+                <img src="{{event.imageUrl}}"> 
+          </div>
      </div>
          
      <div class="event-info">
@@ -9,5 +14,6 @@
           <span>Tickets available:</span>
           <span>{{event.ticketsAvailable}}</span>
           <button (click)="buyTickets(event.id)">Buy tickets</button>
+          <button (click)="deleteEvent(event.id)">Delete</button>
      </div>
 </section>

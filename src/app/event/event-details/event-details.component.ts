@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { EventModel } from '../event-model';
@@ -21,7 +21,8 @@ export class EventDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private eventService: EventsService,
-    private http: HttpClient) { }
+    private http: HttpClient,
+    private router: Router) { }
 
   ngOnInit(): void {
 
@@ -39,6 +40,11 @@ export class EventDetailsComponent implements OnInit {
   buyTickets(id: string) {
     this.event.ticketsAvailable--;
     this.eventService.buyTickets(id, this.event).subscribe();
+  }
+
+  deleteEvent(id: string) {
+    this.eventService.delete(id).subscribe();
+    this.router.navigate(['/']);
   }
      
 }

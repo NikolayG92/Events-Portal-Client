@@ -1,5 +1,6 @@
 
-  <form #f="ngForm"(ngSubmit)="submitFormHandler(f.value)" class="form-group">
+  <form #f="ngForm"(ngSubmit)="submitFormHandler(f.value)" class="form-group"
+  enctype="multipart/form-data">
     <h1 class="form-title">Add Event</h1>
       <div class="form-item">
           <div>
@@ -37,13 +38,13 @@
               <label for="ticketsAvailable">Available Tickets</label>
           </div>
           <input #ticketsAvailable="ngModel" [class.input-error]="ticketsAvailable.touched && !!ticketsAvailable.errors" 
-          type="number" id="ticketsAvailable" name="ticketsAvailable" ngModel required minvalue=10/>
+          type="number" id="ticketsAvailable" name="ticketsAvailable" ngModel required min=10/>
           
         </div>
       <p class="input-error" *ngIf="ticketsAvailable.touched && ticketsAvailable.errors?.required">
           Tickets is required!
       </p>
-      <p class="input-error" *ngIf="ticketsAvailable.touched && ticketsAvailable.errors?.minvalue">
+      <p class="input-error" *ngIf="ticketsAvailable.touched && ticketsAvailable.errors?.min">
           You cannot create event with less than 10 tickets!
       </p>
       
@@ -60,7 +61,6 @@
               <label for="category">Category</label>
           </div>
           <select ngModel value="Select Category" name="category" id="category">
-            
               <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
           </select>
 

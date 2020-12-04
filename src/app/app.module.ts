@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,7 +11,13 @@ import { CoreModule } from './core/core.module';
 import { UserModule } from './user/user.module';
 import { EventModule } from './event/event.module';
 import { CategoryModule } from './category/category.module';
+import { TokenInterceptor } from './core/auth/token.interceptor';
+import { JwtModule } from '@auth0/angular-jwt';
 
+
+export function tokenGetter() {
+  return localStorage.getItem('JWT_TOKEN');
+}
 
 @NgModule({
   declarations: [
@@ -25,9 +31,21 @@ import { CategoryModule } from './category/category.module';
     UserModule,
     HttpClientModule,
     EventModule,
-    CategoryModule
+    CategoryModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter
+      }
+    })
+    ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+
   ],
-  providers: [],
   bootstrap: [
     AppComponent,
     HeaderComponent,

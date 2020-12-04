@@ -28,9 +28,8 @@ export class CategoryService {
          }
   
     getAll() : Observable<CategoryModel[]> {
-        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa
-        (this.currentUser.username + ':' + this.currentUser.password) });
-        return this.http.get<CategoryModel[]>(`${this.apiUrl}/all`, {headers});
+    
+        return this.http.get<CategoryModel[]>(`${this.apiUrl}/all`);
     }
     
     getById(id : string) : Observable<CategoryModel> {
@@ -38,9 +37,8 @@ export class CategoryService {
     }
 
     createCategory(categoryData : CategoryModel) {
-        const headers = new HttpHeaders({ Authorization: 'Basic ' + btoa
-        (this.currentUser.username + ':' + this.currentUser.password) });
-        return this.http.post<CategoryModel>(`${this.apiUrl}/create`, categoryData, {headers});
+      
+        return this.http.post<CategoryModel>(`${this.apiUrl}/create`, categoryData);
     }
 
 }

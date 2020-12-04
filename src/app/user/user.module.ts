@@ -5,13 +5,15 @@ import { RegisterComponent } from './register/register.component';
 import { UserService } from './user.service';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 
 
 @NgModule({
   declarations: [
     LoginComponent, 
-    RegisterComponent
+    RegisterComponent, ProfileComponent, UserEditComponent
   ],
   imports: [
     CommonModule,

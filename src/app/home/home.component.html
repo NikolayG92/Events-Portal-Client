@@ -1,5 +1,5 @@
 <div class="welcome">
-  <div class="logged" *ngIf="!isLogged">
+  <div class="logged" *ngIf="!isLoggedIn()">
     <h3>Welcome to our events portal!</h3>
     <p>Here you can get tickets for events. Don't waste time anymore!
         Explore our events and take tickets now!
@@ -20,7 +20,7 @@
         </li>
       </ul>
     </div>
-    <div *ngIf="isLogged">
+    <div *ngIf="isLoggedIn()">
       
       <app-category-list></app-category-list>
       <app-events-list></app-events-list>

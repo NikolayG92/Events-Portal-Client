@@ -1,5 +1,10 @@
 <article class="event-info">
-    <img src="{{event.imageUrl}}" alt="">
+    <div *ngIf="event.imageUrl === null">
+        <img src="../../../assets/img/no-image-available.jpg">
+   </div>
+   <div *ngIf="event.imageUrl">
+         <img src="{{event.imageUrl}}"> 
+   </div>
     <span>{{event.name}}</span>
     <span>Tickets available: {{event.ticketsAvailable}}</span>
     <button type="submit" routerLink="/events/{{event.id}}">Info</button>

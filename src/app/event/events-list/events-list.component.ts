@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserModel } from 'src/app/user/user-model';
+import { UserService } from 'src/app/user/user.service';
 
 
 import { EventModel } from '../event-model';
@@ -12,7 +14,9 @@ import { EventsService } from '../event.service';
 export class EventsListComponent implements OnInit {
   
   events: EventModel[];
-  constructor(private eventsService : EventsService) { }
+  currentUser: UserModel;
+  constructor(private eventsService : EventsService,
+    private userService: UserService) { }
 
   ngOnInit(): void {
     this.eventsService
@@ -20,6 +24,15 @@ export class EventsListComponent implements OnInit {
           .subscribe(events => {
               this.events = events;
           });
+
+          this.userService.getCurrentUserProfile()
+          .subscribe((user) =>{
+            if(user != null){
+              this.currentUser = user
+            }
+           ;
+          } 
+          )   
   }
 
 }
