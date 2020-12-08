@@ -19,40 +19,41 @@ export class EventsService {
 
     currentUser = this.userService.currentUser;
 
-    constructor(private http : HttpClient,
-        private userService: UserService) { 
-            
-        
-         }
-  
-    getAll() : Observable<EventModel[]> {
-        return this.http.get<EventModel[]>(`${this.apiUrl}/all`);       
+    constructor(private http: HttpClient,
+        private userService: UserService) {
+
+
     }
-    
-    getById(id : string) : Observable<EventModel> {
+
+    getAll(): Observable<EventModel[]> {
+        return this.http.get<EventModel[]>(`${this.apiUrl}/all`);
+    }
+
+    getById(id: string): Observable<EventModel> {
         return this.http.get<EventModel>(`${this.apiUrl}/${id}`);
     }
 
-    
-    addEvent(eventData : EventModel) {
-        
+
+    addEvent(eventData: FormData) {
         return this.http.post<EventModel>(`${this.apiUrl}/create`, eventData);
     }
-    
-    delete(id : string) {
-       
+
+    delete(id: string) {
         return this.http.delete<EventModel>(`${this.apiUrl}/delete/${id}`);
-        
-        }
-    
-    edit(eventData : EventModel) {
+    }
+
+    edit(eventData: EventModel) {
         return this.http.put<EventModel>(`${this.apiUrl}/${eventData.id}`, eventData);
     }
 
-    
-    buyTickets(id : string, eventModel : EventModel) {
-    
-    return this.http.post(`${this.apiUrl}/buyTickets/${id}`, eventModel);
-    
-}
+
+    buyTickets(id: string, eventModel: EventModel) {
+        return this.http.post(`${this.apiUrl}/buyTickets/${id}`, eventModel);
+    }
+
+    getAllByUser(): Observable<EventModel[]> {
+        return this.http.get<EventModel[]>(`${this.apiUrl}/getEventsByUser`);
+    }
+
+
 }

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryModel } from 'src/app/category/category-model';
 import { CategoryService } from 'src/app/category/category.service';
+import { EventModel } from '../event-model';
 import { EventsService } from '../event.service';
 
 @Component({
@@ -11,43 +12,73 @@ import { EventsService } from '../event.service';
 })
 export class EventAddComponent implements OnInit {
 
-  isLoading = false;
   errorMessage = '';
   @Input() categories: CategoryModel[];
+  @Input() event: EventModel;
+  startDate = new Date();
+
+  selectedImage: File;
+
+  imageUrl: any;
 
   constructor(private eventService: EventsService,
     private router: Router,
     private categoryService: CategoryService) { }
 
   ngOnInit(): void {
-    
+
     this.categoryService
-       .getAll()
-       .subscribe(categories => {
-           this.categories = categories;
-          
-       });
+      .getAll()
+      .subscribe(categories => {
+        this.categories = categories;
+
+      });
   }
 
-  submitFormHandler(formValue: {id: string,
-    title: string;
-    ticketsAvailable: number;
-    description: string;
-    startedOn: Date;
-    imageUrl: string;
-    name: string;
-  }): void {
-    this.isLoading = true;
+
+
+  submitFormHandler(event: EventModel): void {
     this.errorMessage = '';
-    this.eventService.addEvent(formValue).subscribe({
-      next: (data) => {
-        this.isLoading = false;
+    event.startDate = this.startDate;
+
+
+    
+    const formData = new FormData;
+    formData.append('file', this.selectedImage, this.selectedImage.name);
+    formData.append('event', new Blob([JSON.stringify(event)], {
+                type: "application/json"
+            }));
+
+ 
+
+    this.eventService.addEvent(formData).subscribe({
+      next: () => {
+     
         this.router.navigate(['/']);
       },
-      error: (err) => {
+      error: () => {
         this.errorMessage = 'ERROR!';
-        this.isLoading = false;
       }
     });
   }
+
+  parseDate(dateString: string): Date {
+    if (dateString) {
+      this.startDate = new Date(dateString);
+    }
+    return this.startDate;
+
+  }
+
+  onImageSelected(event) {
+    this.selectedImage = <File>event.target.files[0];
+
+    var reader = new FileReader();
+    reader.readAsDataURL(this.selectedImage);
+    reader.onload = (_event) => {
+      this.imageUrl = reader.result;
+    }
+  }
+
+  
 }

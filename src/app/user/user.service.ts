@@ -40,16 +40,15 @@ export class UserService {
     return this.http.post(`${this.apiUrl}/register`, user);
   }
 
-  edit(user: {username: string, email: string, oldPassword: string, newPassword: string,
-     confirmPassword: string,
-     imageUrl: string}): Observable<any> {
-    
+  edit(user: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/edit`, user);
   }
 
 
   logout() {
-    this.doLogoutUser();
+    this.isLoggedIn$.next(false);
+    this.loggedUser = null;
+    this.removeTokens();
   }
   
   getCurrentUserProfile(): Observable<any> {
@@ -75,12 +74,6 @@ export class UserService {
     this.loggedUser = username;
     this.storeTokens(tokens);
     this.getCurrentUserProfile();
-  }
-
-  private doLogoutUser() {
-    this.isLoggedIn$.next(false);
-    this.loggedUser = null;
-    this.removeTokens();
   }
 
   private storeTokens(tokens: Tokens) {

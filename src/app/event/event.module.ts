@@ -8,6 +8,7 @@ import { EventComponent } from './event/event.component';
 import { EventsService } from './event.service';
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { FormsModule } from '@angular/forms';
+import { EventsUserComponent } from './events-user/events-user.component';
 
 
 
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     EventAddComponent,
     EventsListComponent,
     EventComponent,
-    EventDetailsComponent
+    EventDetailsComponent,
+    EventsUserComponent
   ],
   imports: [
     CommonModule,

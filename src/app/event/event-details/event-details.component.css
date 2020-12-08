@@ -35,6 +35,7 @@
 .event-info {
     background: beige;
     font-size: larger;
+    margin-top: 50px;
 }
 
 .event-info p {

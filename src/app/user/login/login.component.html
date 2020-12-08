@@ -27,8 +27,10 @@
     <p class="input-error" *ngIf="password.touched && password.errors?.minlength">
         Password should be at least 4 characters
     </p>
-    <div >
-      
-        <button class= "form-btn" >Login</button>
+    <p *ngIf="errorMessage" class="error">
+        {{errorMessage}}
+      </p>
+    <div >  
+        <button [disabled]="f.invalid" class= "form-btn" >Login</button>
     </div>
 </form>

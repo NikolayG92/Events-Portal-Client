@@ -22,6 +22,10 @@ export class RegisterComponent implements OnInit {
   submitFormHandler(formValue: { username: string, email: string, 
     password: string, confirmPassword: string }): void {
     this.errorMessage = '';
+    if(formValue.password !== formValue.confirmPassword){
+       this.errorMessage = 'Passwords do not match!';
+       console.log(this.errorMessage);
+    }
     this.userService.register(formValue).subscribe({
       next: () => {
 

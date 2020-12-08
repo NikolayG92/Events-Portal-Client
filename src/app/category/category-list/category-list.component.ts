@@ -12,20 +12,20 @@ export class CategoryListComponent implements OnInit {
   @Input() categories: CategoryModel[];
 
   constructor(private categoryService: CategoryService) { 
-    
-  this.categories = null;
+  
   }
 
   ngOnInit(): void {
-  
     this.categoryService
-       .getAll()
-       .subscribe(categories => {
-           this.categories = categories;
-          
-       });
+    .getAll()
+    .subscribe(categories => {
+        this.categories = categories;
+       
+    });
+   
   }
 
+ 
   
  
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventModel } from 'src/app/event/event-model';
+import { CategoryModel } from '../category-model';
 import { CategoryService } from '../category.service';
 
 @Component({
@@ -11,6 +12,8 @@ import { CategoryService } from '../category.service';
 export class EventsByCategoryComponent implements OnInit {
   
   events: EventModel[];
+  categories: CategoryModel[];
+  
   constructor(private route: ActivatedRoute,
     private categoryService : CategoryService) { }
 
@@ -25,6 +28,13 @@ export class EventsByCategoryComponent implements OnInit {
           console.log(this.events);
         })
       })
+
+      this.categoryService
+      .getAll()
+      .subscribe(categories => {
+          this.categories = categories;
+         
+      });
 
     }
 }

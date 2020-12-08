@@ -1,0 +1,67 @@
+<form #f="ngForm" (ngSubmit)="submitFormHandler(f.value)" class="form-group">
+    <h1 class="form-title">Edit Profile</h1>
+      <div class="form-item">
+          <div>
+              <label for="username" >Username</label>
+          </div>
+          <input id="username" placeholder="{{user.username}}" name="username" readonly>
+         
+      </div>
+    
+      <div class="form-item">
+          <div>
+              <label for="email">Email</label>
+          </div>
+          <input readonly placeholder="{{user.email}}" id="email" name="email">
+     </div>
+   
+     
+      <div class="form-item">
+          <div>
+              <label for="oldPassword">Old Password</label>
+          </div>
+          <input #oldPassword="ngModel" [class.input-error]="oldPassword.touched && !!oldPassword.errors"
+          type="oldPassword" id="oldPassword" name="oldPassword" ngModel required minlength=4/>
+     </div>
+     <p class="input-error" *ngIf="oldPassword.touched && oldPassword.errors?.required">
+         Password is required!
+     </p>
+     <p class="input-error" *ngIf="oldPassword.touched && oldPassword.errors?.minlength">
+         Password should be at least 4 characters
+     </p>
+     <div class="form-item">
+        <div>
+            <label for="newPassword">New Password</label>
+        </div>
+        <input #newPassword="ngModel" [class.input-error]="newPassword.touched && !!newPassword.errors"
+        type="newPassword" id="newPassword" name="newPassword" ngModel required minlength=4/>
+   </div>
+   <p class="input-error" *ngIf="newPassword.touched && newPassword.errors?.required">
+       Password is required!
+   </p>
+   <p class="input-error" *ngIf="newPassword.touched && newPassword.errors?.minlength">
+       Password should be at least 4 characters
+   </p>
+      <div class="form-item">
+          <div>
+              <label for="confirmPassword">Confirm New Password</label>
+          </div>
+          <input #confirmPassword="ngModel" [class.input-error]="confirmPassword.touched && !!confirmPassword.errors"
+          type="password" id="confirmPassword" name="confirmPassword" ngModel required minlength=4/>
+     </div>
+     <p class="input-error" *ngIf="confirmPassword.touched && confirmPassword.errors?.required">
+         Confirm password is required!
+     </p>
+     <p class="input-error"*ngIf="confirmPassword.touched && confirmPassword.errors?.minlength">
+         Confirm password should be at least 4 characters
+     </p>
+     <div class="form-item">
+         <div>
+             <label for="imageUrl">Set Profile Image</label>
+         </div>
+         <input #imageUrl type="file" (change)="onImageSelected($event)" />
+     </div>
+      <div>
+          <button [disabled]="f.invalid" class="form-btn" value="Edit">Submit</button>
+      </div>
+  </form>

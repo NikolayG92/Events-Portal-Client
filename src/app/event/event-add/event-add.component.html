@@ -1,5 +1,4 @@
-
-  <form #f="ngForm"(ngSubmit)="submitFormHandler(f.value)" class="form-group"
+<form #f="ngForm"(ngSubmit)="submitFormHandler(f.value)" class="form-group"
   enctype="multipart/form-data">
     <h1 class="form-title">Add Event</h1>
       <div class="form-item">
@@ -48,13 +47,21 @@
           You cannot create event with less than 10 tickets!
       </p>
       
+      <div class="form-item">
+          <div>
+              <label for="startDate">Start date</label>
+          </div>
+          <input type="date" #myDate [value]="myDate.startDate | date:'yyyy-MM-dd'" (input)="startDate=parseDate($event.target.value)" />
+
+      </div>
 
       <div class="form-item">
         <div>
             <label for="imageUrl">Select image</label>
         </div>
-        <input type="file" class="form-control" id="imageUrl" name="imageUrl"/>
+        <input #imageUrl type="file" (change)="onImageSelected($event)" />
     </div>
+
 
       <div class="form-item">
           <div>
@@ -66,6 +73,6 @@
 
       </div>
       <div>
-          <button class="form-btn" value="createEvent">Create event</button>
+          <button  [disabled]="f.invalid" class="form-btn" value="createEvent">Create event</button>
       </div>
   </form>

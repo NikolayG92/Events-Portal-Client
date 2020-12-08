@@ -54,7 +54,10 @@
      <p class="input-error"*ngIf="confirmPassword.touched && confirmPassword.errors?.minlength">
          Confirm password should be at least 4 characters
      </p>
+     <p *ngIf="errorMessage" class="input-error">
+        {{errorMessage}}
+      </p>
       <div>
-          <button class="form-btn" value="Register">Register</button>
+          <button [disabled]="f.invalid" class="form-btn" value="Register">Register</button>
       </div>
   </form>

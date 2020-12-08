@@ -3,7 +3,7 @@ export interface EventModel{
     title: string;
     ticketsAvailable: number;
     description: string;
-    startedOn: Date;
-    imageUrl: string;
+    startDate: Date;
+    imageUrl: File;
     name: string;
 }

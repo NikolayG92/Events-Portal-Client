@@ -23,7 +23,6 @@ export class CategoryAddComponent implements OnInit {
   submitFormHandler(formValue: {id: string,
     name: string;
     events: EventModel[];
-    imageUrl: string;
     
   }): void {
     this.isLoading = true;

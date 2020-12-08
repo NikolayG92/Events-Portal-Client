@@ -11,6 +11,7 @@
          
      <div class="event-info">
           <p>{{event.description}}</p>
+          <span>{{event.startDate}}</span>
           <span>Tickets available:</span>
           <span>{{event.ticketsAvailable}}</span>
           <button (click)="buyTickets(event.id)">Buy tickets</button>

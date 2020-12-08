@@ -12,29 +12,17 @@ import { CategoryService } from '../category.service';
 export class CategoryComponent implements OnInit {
 
   @Input() category: CategoryModel;
-  categories: CategoryModel[];
+
   events: EventModel[];
 
-  constructor(private route: ActivatedRoute,
-     private categoryService: CategoryService ) {}
+  constructor( ) {}
 
   ngOnInit(): void {
+    
 
-     this.route.params.subscribe(params => {
-      const id = params['id'];
-      this.categoryService.getById(id)
-      .subscribe(data => {
-        this.category = data;
-      
-      })
 
-      this.categoryService
-      .getAll()
-      .subscribe(categories => {
-          this.categories = categories;
-         
-      });
-  })
   }
+
+
   
 }

@@ -1,0 +1,13 @@
+<div class="profile-container">
+    <div>
+        <div>
+            <h1>{{user.username}}</h1>
+            <img style="width: 225px ; height: 225px ;border-radius: 50%" src="{{user.imageUrl}}">
+        </div>
+    </div>
+    <div class="profile-info">
+        <p>Email:</p>
+        <p>{{user.email}}</p>
+        <button routerLink="/user/edit">Edit Profile</button>
+    </div>
+</div>
