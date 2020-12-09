@@ -12,7 +12,7 @@ and when it is.
 # Screenshots
 
 - Index page:
-![IndexPage](/blob/master/src/assets/img/login-form.jpg))
+![IndexPage](/blob/master/src/assets/img/homepage-without-user.jpg)
 
 - Login form:
 ![LoginForm](/blob/master/src/assets/img/login-form.jpg)
