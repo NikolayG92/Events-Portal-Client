@@ -12,37 +12,37 @@ and when it is.
 # Screenshots
 
 - Index page:
-![IndexPage] (https://github.com/radichev/WorkForYou-API/blob/master/src/main/resources/static/screenshots/index.jpg)
+![IndexPage](/blob/master/src/assets/img/login-form.jpg))
 
 - Login form:
-![LoginForm] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/login-form.jpg)
+![LoginForm](/blob/master/src/assets/img/login-form.jpg)
 
 - Register form:
-![RegisterForm] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/register-form.jpg)
+![RegisterForm](/blob/master/src/assets/img/register-form.jpg)
 
 - Home page:  Home page contains all the events with navbar to change the categories.
-![HomePage] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/logged-homepage.jpg)
+![HomePage](/blob/master/src/assets/img/logged-homepage.jpg)
  
 - Info for event: Here you can see a bit more info about the event. You can also buy tickets for it or delete it.
-![EventInfo] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/event-info.jpg)
+![EventInfo](/blob/master/src/assets/img/event-info.jpg)
  
 - My events page: This page contains the events you bought tickets for them and how many tickets you have for them.
-![MyEvents] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/my-events.jpg)
+![MyEvents](/blob/master/src/assets/img/my-events.jpg)
  
 - Events by category: This page show you the events by category.
-![EventsByCategory] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/events-by-category.jpg)
+![EventsByCategory](/blob/master/src/assets/img/events-by-category.jpg)
  
 - Create event: You can create event and to upload photo for it. If you don't upload photo default one will be set.
-![CreateEvent] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/create-event.jpg)
+![CreateEvent](/blob/master/src/assets/img/create-event.jpg)
  
 - Create category: You can create new category.
-![CreateCategory] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/create-category.jpg)
+![CreateCategory](/blob/master/src/assets/img/create-category.jpg)
  
 - User Profile page: Some info for you.
-![UserProfile] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/user-profile-page.jpg)
+![UserProfile](/blob/master/src/assets/img/user-profile-page.jpg)
  
 -Edit profile page: You can change your password and your profile image.
-![EditProfile] (https://github.com/NikolayG92/Events-Portal-Client/blob/master/src/assets/img/edit-profile-page.jpg)
+![EditProfile](/blob/master/src/assets/img/edit-profile-page.jpg)
  
  
  
