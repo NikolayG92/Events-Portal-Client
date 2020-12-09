@@ -1,8 +1,14 @@
 # EventsPortal
 Events portal is platform for creating and joining in different events.
 Every event has category so you can easily find something which you need.
-You can buy as tickets and checks everytime for what event you have tickets 
+You can buy a tickets and checks everytime for what event you have tickets 
 and when it is.
+
+# Back-end Side
+In other repo is the back-end side of this project.
+Here is the link - https://github.com/NikolayG92/EventsPortal-api 
+Back-end side is created on Java Spring and for easier start you can
+run it with docker-compose. There are more info about it in his repo.
 
 # Build with:
 - Angular Cli
