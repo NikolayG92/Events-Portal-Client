@@ -41,7 +41,7 @@ and when it is.
 - User Profile page: Some info for you.
 ![UserProfile](/src/assets/img/user-profile-page.jpg)
  
--Edit profile page: You can change your password and your profile image.
+- Edit profile page: You can change your password and your profile image.
 ![EditProfile](/src/assets/img/edit-profile-page.jpg)
  
  
