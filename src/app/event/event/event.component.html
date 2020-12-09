@@ -5,8 +5,11 @@
    <div *ngIf="event.imageUrl">
          <img src="{{event.imageUrl}}"> 
    </div>
+   <div class="event">
     <span>{{event.name}}</span>
     <span>{{event.startDate}}</span>
     <span>Tickets available: {{event.ticketsAvailable}}</span>
+    <span >You have: {{boughtTickets}} tickets</span>
     <button type="submit" routerLink="/events/{{event.id}}">Info</button>
+    </div>
 </article>

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { tick } from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -36,9 +37,11 @@ export class EventDetailsComponent implements OnInit {
     })
   }
 
-  buyTickets(id: string) {
-    this.event.ticketsAvailable--;
+  buyTickets(formValue: {tickets: number}, id: string) {
+    this.event.ticketsAvailable = this.event.ticketsAvailable - formValue.tickets;
+    this.event.boughtTickets = formValue.tickets;
     this.eventService.buyTickets(id, this.event).subscribe();
+    this.router.navigate(['/user/events']);
   }
 
   deleteEvent(id: string) {

@@ -1,6 +1,10 @@
+
 <section class="events" *ngIf="events">
     <h1>Your Events:</h1>
-    <app-event *ngFor="let event of events" [event]="event"></app-event>
+    <div class="my-events">
+        <app-event *ngFor="let event of events" [event]="event">
+        </app-event>
+    </div>  
 </section>
 <section class="no-events" *ngIf="events.length === 0">
     <h1>You have not events in your list!</h1>

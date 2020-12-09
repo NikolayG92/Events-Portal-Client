@@ -1,3 +1,5 @@
+@import 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css';
+
 .welcome {
   background: bisque;
   border: 1px solid gray;
@@ -6,15 +8,49 @@
   align-items: center;
 }
 
-.welcome-nav {
+.welcome h1 {
+  font-size: xxx-large;
+  color: darkgoldenrod;
+  border-bottom: 2px solid sandybrown;
+  justify-content: center;
   display: flex;
-  list-style: none;
 }
 
-.welcome-nav li a {
+.welcome p {
+  font-size: larger;
+  font-family: cursive;
+  color: tomato;
+}
+
+span {
+  color: steelblue;
+  font-size: larger;
+  font-family: cursive;
+}
+
+a {
   text-decoration: none;
-  color: firebrick;
-  margin-right: 15px;
-  font-weight: 800;
+  color: tomato;
+  font-weight: bold;
   font-size: x-large;
+}
+
+.icons {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+.icon-item i {
+  font-size: xxx-large;
+  color: saddlebrown;
+  margin-right: 50px;
+}
+
+.not-logged {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

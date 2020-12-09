@@ -3,8 +3,6 @@
     margin: 0 auto;
     border: 2px solid black;
     border-radius: 12px;
-    margin-top: 30px;
-    margin-bottom: 30px;
     background: bisque;
 }
 
@@ -35,7 +33,9 @@
 .event-info {
     background: beige;
     font-size: larger;
-    margin-top: 50px;
+    padding-top: 30px;
+    font-family: cursive;
+    color: brown;
 }
 
 .event-info p {
@@ -52,5 +52,11 @@
     font-weight: 700;
     color: oldlace;
     margin-top: 9px;
+}
+
+.form-buyTickets {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 

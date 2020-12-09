@@ -1,5 +1,6 @@
 .form-title {
-    color: rgba(4, 8, 17, 0.521);
+    font-family: math;
+    color: cadetblue;
     display: flex;
     justify-content: center; 
     border-bottom: 2px solid gray;
@@ -12,7 +13,7 @@
     border: 2px solid gray;
     width: 30%;
     margin: 0 auto;
-    margin-bottom: 50px;
+    background: oldlace;
 }
 
 .form-item {     

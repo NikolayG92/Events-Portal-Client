@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment'
 import { UserService } from '../user/user.service';
 import { EventModel } from './event-model';
+import { EventTicketsModel } from './event-tickets-model';
 
 
 
@@ -53,6 +54,10 @@ export class EventsService {
 
     getAllByUser(): Observable<EventModel[]> {
         return this.http.get<EventModel[]>(`${this.apiUrl}/getEventsByUser`);
+    }
+
+    getEventsWithBoughtTicketsByUser(): Observable<EventTicketsModel[]> {
+        return this.http.get<EventTicketsModel[]>(`${this.apiUrl}/getEventsBoughtTickets`);
     }
 
 

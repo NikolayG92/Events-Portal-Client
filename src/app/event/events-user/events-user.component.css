@@ -6,6 +6,11 @@
     background: bisque;   
 }
 
+.my-events {
+    display: flex;
+    flex-direction: row;
+}
+
 .events h1 {
     font-size: xx-large;
     color: brown;

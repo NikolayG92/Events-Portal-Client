@@ -1,3 +1,4 @@
+
 <section class="event-details">
      <div class="event-header">
           <h1>{{event.name}}</h1>
@@ -11,10 +12,14 @@
          
      <div class="event-info">
           <p>{{event.description}}</p>
+          <span>Starts in:</span>
           <span>{{event.startDate}}</span>
           <span>Tickets available:</span>
           <span>{{event.ticketsAvailable}}</span>
-          <button (click)="buyTickets(event.id)">Buy tickets</button>
+          <form #f="ngForm" (ngSubmit)="buyTickets(f.value, event.id)" class="form-buyTickets form-group">
+               <input #tickets ngModel type="number" min=1 id="tickets" name="tickets">
+               <button [disabled]="f.invalid" class="form-btn">Buy tickets</button>
+          </form> 
           <button (click)="deleteEvent(event.id)">Delete</button>
      </div>
 </section>

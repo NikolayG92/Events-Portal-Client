@@ -1,23 +1,20 @@
 <div class="welcome">
-  <div class="logged" *ngIf="!isLoggedIn()">
-    <h3>Welcome to our events portal!</h3>
+  <div class="not-logged" *ngIf="!isLoggedIn()">
+    <h1>Welcome to our events portal!</h1>
     <p>Here you can get tickets for events. Don't waste time anymore!
         Explore our events and take tickets now!
-    </p>
-    
-      <ul class="welcome-nav">
-        <li>
-          <a routerLink="/user/login">
-            <i class="fas fa-sign-in-alt"></i>
-            Login
-          </a>
-        </li>
-        <li>
-          <a routerLink="/user/register">
-            <i class="fas fa-user-plus"></i>
-            Register
-          </a>
-        </li>
+    </p>    
+        <span>Let's get started!  <a routerLink="/user/login">          
+          Login
+        </a> if you have an account or  <a routerLink="/user/register">
+          Sign up
+        </a> if you don't have!
+        </span>
+  
+      <ul class="icons">
+        <li class="icon-item"><i class="fas fa-futbol"></i></li>
+        <li class="icon-item"><i class="fas fa-table-tennis"></i></li>
+        <li class="icon-item"><i class="fas fa-theater-masks"></i></li>
       </ul>
     </div>
     <div *ngIf="isLoggedIn()">
