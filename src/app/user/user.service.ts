@@ -35,13 +35,19 @@ export class UserService {
         );
   }
   
-  register(user: { username: string, email: string, password: string }): Observable<any> {
-    
-    return this.http.post(`${this.apiUrl}/register`, user);
+  register(user: { username: string, email: string, password: string }) {
+    return this.http.post(`${this.apiUrl}/register`, user)
+    .pipe(
+      catchError(error => {
+        alert(error.error);
+        return of(false);
+      })
+    )
   }
 
   edit(user: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/edit`, user);
+   
   }
 
 
@@ -75,6 +81,7 @@ export class UserService {
     this.storeTokens(tokens);
     this.getCurrentUserProfile();
   }
+
 
   private storeTokens(tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.jwt);

@@ -13,7 +13,9 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 @NgModule({
   declarations: [
     LoginComponent, 
-    RegisterComponent, ProfileComponent, UserEditComponent
+    RegisterComponent, 
+    ProfileComponent, 
+    UserEditComponent
   ],
   imports: [
     CommonModule,

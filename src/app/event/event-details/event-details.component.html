@@ -17,8 +17,12 @@
           <span>Tickets available:</span>
           <span>{{event.ticketsAvailable}}</span>
           <form #f="ngForm" (ngSubmit)="buyTickets(f.value, event.id)" class="form-buyTickets form-group">
-               <input #tickets ngModel type="number" min=1 id="tickets" name="tickets">
-               <button [disabled]="f.invalid" class="form-btn">Buy tickets</button>
+               <input #tickets ngModel type="number" min=1 required id="tickets" name="tickets">
+               <p *ngIf="errorMessage" class="input-error">
+                    {{errorMessage}}
+               </p>
+               <button [disabled]="f.invalid" class="form-btn">Buy tickets</button>  
+               
           </form> 
           <button (click)="deleteEvent(event.id)">Delete</button>
      </div>

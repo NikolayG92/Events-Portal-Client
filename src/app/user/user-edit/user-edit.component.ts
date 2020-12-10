@@ -38,12 +38,18 @@ export class UserEditComponent implements OnInit {
     })
   }
   
-  submitFormHandler(user: UserModel): void {
+  submitFormHandler(formValue:{
+     oldPassword: string,
+     newPassword: string, 
+     confirmPassword: string
+    }): void {
     this.errorMessage = '';
-
+        if(formValue.newPassword !== formValue.confirmPassword){
+      this.errorMessage = 'Passwords do not match!';
+   }
     const formData = new FormData;
     formData.append('file', this.selectedImage, this.selectedImage.name);
-    formData.append('user', new Blob([JSON.stringify(user)], {
+    formData.append('user', new Blob([JSON.stringify(formValue)], {
                 type: "application/json"
             }));
 
@@ -52,7 +58,7 @@ export class UserEditComponent implements OnInit {
         this.router.navigate(['/user/profile']);
       },
       error: () => {
-        this.errorMessage = 'ERROR!';
+        this.errorMessage = 'Wrong credentials!';
       }
     });
   }

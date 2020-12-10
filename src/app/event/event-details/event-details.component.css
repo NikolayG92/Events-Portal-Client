@@ -60,3 +60,7 @@
     align-items: center;
 }
 
+.input-error {
+    color: red;
+}
+

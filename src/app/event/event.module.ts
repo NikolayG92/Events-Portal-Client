@@ -7,7 +7,7 @@ import { EventsListComponent } from './events-list/events-list.component';
 import { EventComponent } from './event/event.component';
 import { EventsService } from './event.service';
 import { EventDetailsComponent } from './event-details/event-details.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventsUserComponent } from './events-user/events-user.component';
 
 
@@ -26,7 +26,8 @@ import { EventsUserComponent } from './events-user/events-user.component';
     CommonModule,
     RouterModule,
     EventRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     EventAddComponent,

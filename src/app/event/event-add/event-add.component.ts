@@ -42,18 +42,20 @@ export class EventAddComponent implements OnInit {
     event.startDate = this.startDate;
 
 
-    
-    const formData = new FormData;
-    formData.append('file', this.selectedImage, this.selectedImage.name);
-    formData.append('event', new Blob([JSON.stringify(event)], {
-                type: "application/json"
-            }));
 
- 
+    const formData = new FormData;
+
+    formData.append('file', this.selectedImage, this.selectedImage.name);
+
+    formData.append('event', new Blob([JSON.stringify(event)], {
+      type: "application/json"
+    }));
+
+
 
     this.eventService.addEvent(formData).subscribe({
       next: () => {
-     
+
         this.router.navigate(['/']);
       },
       error: () => {
@@ -80,5 +82,5 @@ export class EventAddComponent implements OnInit {
     }
   }
 
-  
+
 }

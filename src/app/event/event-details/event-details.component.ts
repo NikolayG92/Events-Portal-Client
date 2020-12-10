@@ -17,7 +17,7 @@ export class EventDetailsComponent implements OnInit {
   
   @Input() event: EventModel;
 
-  
+  errorMessage = '';
   apiUrl = `${environment.apiUrl}/events`
 
   constructor(private route: ActivatedRoute,
@@ -38,10 +38,21 @@ export class EventDetailsComponent implements OnInit {
   }
 
   buyTickets(formValue: {tickets: number}, id: string) {
-    this.event.ticketsAvailable = this.event.ticketsAvailable - formValue.tickets;
-    this.event.boughtTickets = formValue.tickets;
-    this.eventService.buyTickets(id, this.event).subscribe();
-    this.router.navigate(['/user/events']);
+    this.errorMessage = '';
+    if(formValue.tickets <= 0){
+      this.errorMessage = 'Tickets must be positive number!';
+    }else {
+      if(this.event.ticketsAvailable < formValue.tickets){
+        this.errorMessage = 'There are not so many available tickets!'
+      }else {
+        this.event.ticketsAvailable = this.event.ticketsAvailable - formValue.tickets;
+        this.event.boughtTickets = formValue.tickets;
+        this.eventService.buyTickets(id, this.event).subscribe();
+        this.router.navigate(['/user/events']);
+      }
+     
+    }
+   
   }
 
   deleteEvent(id: string) {

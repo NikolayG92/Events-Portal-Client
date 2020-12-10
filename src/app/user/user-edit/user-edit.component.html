@@ -21,7 +21,7 @@
               <label for="oldPassword">Old Password</label>
           </div>
           <input #oldPassword="ngModel" [class.input-error]="oldPassword.touched && !!oldPassword.errors"
-          type="oldPassword" id="oldPassword" name="oldPassword" ngModel required minlength=4/>
+          type="password" id="oldPassword" name="oldPassword" ngModel required minlength=4/>
      </div>
      <p class="input-error" *ngIf="oldPassword.touched && oldPassword.errors?.required">
          Password is required!
@@ -34,7 +34,7 @@
             <label for="newPassword">New Password</label>
         </div>
         <input #newPassword="ngModel" [class.input-error]="newPassword.touched && !!newPassword.errors"
-        type="newPassword" id="newPassword" name="newPassword" ngModel required minlength=4/>
+        type="password" id="newPassword" name="newPassword" ngModel required minlength=4/>
    </div>
    <p class="input-error" *ngIf="newPassword.touched && newPassword.errors?.required">
        Password is required!
@@ -59,8 +59,14 @@
          <div>
              <label for="imageUrl">Set Profile Image</label>
          </div>
-         <input #imageUrl type="file" (change)="onImageSelected($event)" />
-     </div>
+         <input #imageUrl type="file" (change)="onImageSelected($event)" required/>
+         <p class="input-error" *ngIf="imageUrl.errors?.required">
+             You should upload profile image!
+         </p>
+     </div> 
+      <p *ngIf="errorMessage" class="input-error">
+        {{errorMessage}}
+      </p>
       <div>
           <button [disabled]="f.invalid" class="form-btn" value="Edit">Submit</button>
       </div>
