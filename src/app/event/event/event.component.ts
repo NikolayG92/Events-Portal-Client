@@ -16,7 +16,7 @@ import { EventsService } from '../event.service';
 export class EventComponent implements OnInit {
 
   @Input() event: EventModel;
-  events: EventTicketsModel[];
+  @Input() events: EventTicketsModel[];
   boughtTickets: number;
   currentUser: UserModel;
 

@@ -41,8 +41,6 @@ export class EventAddComponent implements OnInit {
     this.errorMessage = '';
     event.startDate = this.startDate;
 
-
-
     const formData = new FormData;
 
     formData.append('file', this.selectedImage, this.selectedImage.name);
@@ -51,17 +49,22 @@ export class EventAddComponent implements OnInit {
       type: "application/json"
     }));
 
+    let currentDate = new Date();
 
-
+   if(event.startDate < currentDate){
+     this.errorMessage = "Date cannot be in the past!";
+   }
+   else {
     this.eventService.addEvent(formData).subscribe({
       next: () => {
-
         this.router.navigate(['/']);
       },
       error: () => {
         this.errorMessage = 'ERROR!';
       }
     });
+   }
+   
   }
 
   parseDate(dateString: string): Date {

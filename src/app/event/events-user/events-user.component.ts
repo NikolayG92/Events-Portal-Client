@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnChanges, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/user/user-model';
 import { UserService } from 'src/app/user/user.service';
 import { EventModel } from '../event-model';
@@ -9,7 +9,7 @@ import { EventsService } from '../event.service';
   templateUrl: './events-user.component.html',
   styleUrls: ['./events-user.component.css']
 })
-export class EventsUserComponent implements OnInit {
+export class EventsUserComponent implements OnInit{
 
   events: EventModel[];
   currentUser: UserModel;
@@ -23,5 +23,6 @@ export class EventsUserComponent implements OnInit {
         this.events = events;
       });
   }
+
 
 }

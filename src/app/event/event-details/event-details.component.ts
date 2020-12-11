@@ -48,7 +48,7 @@ export class EventDetailsComponent implements OnInit {
         this.event.ticketsAvailable = this.event.ticketsAvailable - formValue.tickets;
         this.event.boughtTickets = formValue.tickets;
         this.eventService.buyTickets(id, this.event).subscribe();
-        this.router.navigate(['/user/events']);
+        this.router.navigate(['/']);
       }
      
     }

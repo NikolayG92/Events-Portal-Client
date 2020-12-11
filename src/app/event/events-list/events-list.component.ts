@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { UserModel } from 'src/app/user/user-model';
 import { UserService } from 'src/app/user/user.service';
 
@@ -11,14 +11,14 @@ import { EventsService } from '../event.service';
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css']
 })
-export class EventsListComponent implements OnInit {
+export class EventsListComponent implements AfterViewInit {
   
   events: EventModel[];
   currentUser: UserModel;
   constructor(private eventsService : EventsService,
     private userService: UserService) { }
 
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.eventsService
           .getAll()
           .subscribe(events => {
@@ -34,5 +34,6 @@ export class EventsListComponent implements OnInit {
           } 
           )   
   }
+
 
 }
