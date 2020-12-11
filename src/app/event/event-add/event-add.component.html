@@ -52,7 +52,9 @@
               <label for="startDate">Start date</label>
           </div>
           <input type="date" #myDate [value]="myDate.startDate | date:'yyyy-MM-dd'" (input)="startDate=parseDate($event.target.value)" />
-
+          <p class="input-error">
+            {{errorMessageStartDate}}
+          </p>
       </div>
 
       <div class="form-item">
@@ -60,6 +62,9 @@
             <label for="imageUrl">Select image</label>
         </div>
         <input #imageUrl type="file" (change)="onImageSelected($event)" required/>
+        <p class="input-error">
+            {{noImage}}
+        </p>
     </div>
 
 
@@ -67,10 +72,12 @@
           <div>
               <label for="category">Category</label>
           </div>
-          <select ngModel value="Select Category" name="category" id="category">
+          <select #category="ngModel" ngModel value="Select Category" name="category" id="category" required>
               <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
           </select>
-
+          <p class="input-error" *ngIf="category.name === ''">
+               Please select category!
+          </p>
       </div>
       <p class="input-error">
           {{errorMessage}}

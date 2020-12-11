@@ -12,7 +12,9 @@ import { EventsService } from '../event.service';
 })
 export class EventAddComponent implements OnInit {
 
+  errorMessageStartDate = '';
   errorMessage = '';
+  noImage = '';
   @Input() categories: CategoryModel[];
   @Input() event: EventModel;
   startDate = new Date();
@@ -38,12 +40,18 @@ export class EventAddComponent implements OnInit {
 
 
   submitFormHandler(event: EventModel): void {
-    this.errorMessage = '';
+   this.noImage = '';
+   this.errorMessageStartDate = '';
+
     event.startDate = this.startDate;
 
     const formData = new FormData;
-
-    formData.append('file', this.selectedImage, this.selectedImage.name);
+    if(this.selectedImage === undefined){
+      this.noImage = 'Please select image!';
+    }else {
+      formData.append('file', this.selectedImage, this.selectedImage.name);
+    }
+   
 
     formData.append('event', new Blob([JSON.stringify(event)], {
       type: "application/json"
@@ -52,9 +60,8 @@ export class EventAddComponent implements OnInit {
     let currentDate = new Date();
 
    if(event.startDate < currentDate){
-     this.errorMessage = "Date cannot be in the past!";
-   }
-   else {
+     this.errorMessageStartDate = "Date cannot be in the past!";
+   }else {
     this.eventService.addEvent(formData).subscribe({
       next: () => {
         this.router.navigate(['/']);
