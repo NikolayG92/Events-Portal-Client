@@ -11,14 +11,14 @@ import { EventsService } from '../event.service';
   templateUrl: './events-list.component.html',
   styleUrls: ['./events-list.component.css']
 })
-export class EventsListComponent implements AfterViewInit {
+export class EventsListComponent implements OnInit {
   
   events: EventModel[];
   currentUser: UserModel;
   constructor(private eventsService : EventsService,
     private userService: UserService) { }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.eventsService
           .getAll()
           .subscribe(events => {

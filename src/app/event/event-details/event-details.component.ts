@@ -47,8 +47,16 @@ export class EventDetailsComponent implements OnInit {
       }else {
         this.event.ticketsAvailable = this.event.ticketsAvailable - formValue.tickets;
         this.event.boughtTickets = formValue.tickets;
-        this.eventService.buyTickets(id, this.event).subscribe();
+        this.eventService.buyTickets(id, this.event).subscribe({
+         next: () => {
         this.router.navigate(['/']);
+      },
+      error: () => {
+        this.errorMessage = 'ERROR!';
+      }
+    });
+      ;
+      
       }
      
     }
@@ -56,10 +64,18 @@ export class EventDetailsComponent implements OnInit {
   }
 
   deleteEvent(id: string) {
-    this.eventService.delete(id).subscribe();
-    this.router.navigate(['/']);
+    this.eventService.delete(id).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        this.errorMessage = 'ERROR!';
+      }
+    });
+    }
+  
   }
      
-}
+
 
 

@@ -16,7 +16,7 @@ import { EventsService } from '../event.service';
 export class EventComponent implements OnInit {
 
   @Input() event: EventModel;
-  @Input() events: EventTicketsModel[];
+  events: EventTicketsModel[];
   boughtTickets: number;
   currentUser: UserModel;
 
@@ -31,10 +31,9 @@ export class EventComponent implements OnInit {
 
     this.eventService.getEventsWithBoughtTicketsByUser()
     .subscribe((events) => this.events = events);
-    
     this.event.users.forEach(user => {
       if(this.currentUser.id === user.user.id){
-        console.log(user.boughtTickets);
+
         this.boughtTickets = user.boughtTickets;
       }
     }

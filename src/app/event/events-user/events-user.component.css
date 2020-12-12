@@ -9,6 +9,8 @@
 .my-events {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .events h1 {
