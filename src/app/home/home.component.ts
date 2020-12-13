@@ -20,7 +20,6 @@ export class HomeComponent {
   hasCompletedAccountSetup: boolean;
 
   constructor(private userService: UserService,
-     private router: Router, 
      private jwtHelper: JwtService) { }
 
   ngOnInit(): void {}

@@ -46,13 +46,16 @@
       <p class="input-error" *ngIf="ticketsAvailable.touched && ticketsAvailable.errors?.min">
           You cannot create event with less than 10 tickets!
       </p>
+      <p class="input-error" *ngIf="ticketsMinError">
+          {{ticketsMinError}}
+      </p>
       
       <div class="form-item">
           <div>
               <label for="startDate">Start date</label>
           </div>
           <input type="date" #myDate [value]="myDate.startDate | date:'yyyy-MM-dd'" (input)="startDate=parseDate($event.target.value)" />
-          <p class="input-error">
+          <p class="input-error" *ngIf="errorMessageStartDate">
             {{errorMessageStartDate}}
           </p>
       </div>
@@ -62,7 +65,7 @@
             <label for="imageUrl">Select image</label>
         </div>
         <input #imageUrl type="file" (change)="onImageSelected($event)" required/>
-        <p class="input-error">
+        <p class="input-error" *ngIf="noImage">
             {{noImage}}
         </p>
     </div>
@@ -79,7 +82,7 @@
                Please select category!
           </p>
       </div>
-      <p class="input-error">
+      <p class="input-error" *ngIf="errorMessage">
           {{errorMessage}}
       </p>
       <div>

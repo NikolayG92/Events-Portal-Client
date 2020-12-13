@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { catchError, delay, map, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Tokens } from './tokens';
@@ -12,56 +12,59 @@ import { UserModel } from './user-model';
 })
 export class UserService {
 
-  apiUrl = environment.apiUrl + "/users"; 
+  apiUrl = environment.apiUrl + "/users";
   currentUser: any | null;
+  resp: HttpResponse<String>;
+  loggedUser: string;
 
-  private loggedUser: string;
+  private JWT_TOKEN = 'JWT_TOKEN';
 
-  private readonly JWT_TOKEN = 'JWT_TOKEN';
- 
 
   isLoggedIn$: BehaviorSubject<boolean>;
 
-  constructor(private http: HttpClient) {  
+  constructor(private http: HttpClient) {
     this.isLoggedIn$ = new BehaviorSubject<boolean>(this.isLoggedIn());
   }
 
-  
+
 
   login(user: { username: string, password: string }): Observable<boolean> {
     return this.http.post<any>(`${this.apiUrl}/login`, user)
       .pipe(
         tap(token => this.doLoginUser(user.username, token))
-        );
+      );
   }
-  
+
   register(user: { username: string, email: string, password: string }) {
     return this.http.post(`${this.apiUrl}/register`, user)
     .pipe(
       catchError(error => {
-        alert(error.error);
+        alert(error);
         return of(false);
       })
-    )
+    
+      )
   }
 
   edit(user: FormData): Observable<any> {
     return this.http.post(`${this.apiUrl}/edit`, user);
-   
-  }
 
+  }
 
   logout() {
     this.isLoggedIn$.next(false);
     this.loggedUser = null;
     this.removeTokens();
   }
-  
+
   getCurrentUserProfile(): Observable<any> {
-    
+
     return this.http.get(`${this.apiUrl}/profile`).pipe(
       tap(((user: UserModel) => this.currentUser = user)),
-      catchError(() => { this.currentUser = null; return of(null); })
+      catchError(error => {
+        this.currentUser = null;
+        return error;
+      })
     );
   }
 

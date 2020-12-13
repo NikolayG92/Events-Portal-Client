@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/']);
       },
       error: () => {
-        this.errorMessage = "Wrong credentials!";
+        this.errorMessage = "Wrong username or password!";
       }
     });
   }

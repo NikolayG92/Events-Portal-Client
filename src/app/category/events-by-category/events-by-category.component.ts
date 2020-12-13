@@ -15,7 +15,7 @@ import { CategoryService } from '../category.service';
 })
 export class EventsByCategoryComponent implements OnInit {
 
-  event: EventModel;
+  @Input() event: EventModel;
   categories: CategoryModel[];
   events: EventModel[];
   currentUser: UserModel;
@@ -37,6 +37,7 @@ export class EventsByCategoryComponent implements OnInit {
         
     });
   });
+    
     this.categoryService
       .getAll()
       .subscribe(categories => {

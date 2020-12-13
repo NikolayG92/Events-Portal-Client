@@ -15,6 +15,7 @@ export class EventAddComponent implements OnInit {
   errorMessageStartDate = '';
   errorMessage = '';
   noImage = '';
+  ticketsMinError = '';
   @Input() categories: CategoryModel[];
   @Input() event: EventModel;
   startDate = new Date();
@@ -42,10 +43,14 @@ export class EventAddComponent implements OnInit {
   submitFormHandler(event: EventModel): void {
    this.noImage = '';
    this.errorMessageStartDate = '';
+   this.ticketsMinError = '';
 
     event.startDate = this.startDate;
 
     const formData = new FormData;
+    if(event.ticketsAvailable < 10){
+      this.ticketsMinError = 'Tickets must be at least 10!';
+    }
     if(this.selectedImage === undefined){
       this.noImage = 'Please select image!';
     }else {
